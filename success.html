@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123d30">
+
+  <title>訂單成功 | 健康生活</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #123d30;
+      --dark: #09271e;
+      --gold: #c49b55;
+      --cream: #faf7ef;
+      --text: #252d28;
+      --muted: #727a73;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    .success-card {
+      width: 100%;
+      max-width: 520px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 45px 35px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(9, 39, 30, 0.09);
+    }
+
+    .success-icon {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #e7f5ec;
+      color: #16834c;
+      font-size: 48px;
+      font-weight: 800;
+    }
+
+    h1 {
+      color: var(--green);
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .order-box {
+      background: #f4f0e6;
+      border: 1px solid #e5d7b9;
+      border-radius: 12px;
+      padding: 22px 15px;
+      margin-bottom: 25px;
+    }
+
+    .order-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 9px;
+    }
+
+    .order-number {
+      color: var(--green);
+      font-size: clamp(19px, 5vw, 25px);
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .next-title {
+      color: var(--green);
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .next-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      margin: 14px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .step-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .note {
+      background: #f8f8f5;
+      padding: 14px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+      margin-top: 25px;
+    }
+
+    .home-button {
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 8px;
+      background: linear-gradient(120deg, #d9b36e, #f1d49b);
+      color: #172d20;
+      font-weight: 900;
+      text-decoration: none;
+      transition: .2s;
+    }
+
+    .home-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #a0a69f;
+      font-size: 11px;
+    }
+
+    .missing-order {
+      display: none;
+      color: #b42318;
+      font-size: 13px;
+      line-height: 1.8;
+      margin-top: 12px;
+    }
+
+    @media(max-width: 480px) {
+      .success-card {
+        padding: 35px 22px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="success-card">
+
+    <div class="success-icon">✓</div>
+
+    <h1>訂單提交成功！</h1>
+
+    <p class="description">
+      感謝您的訂購！我們已收到您的訂單資料。
+      請保存以下訂單編號，以便日後查詢。
+    </p>
+
+    <div class="order-box">
+      <div class="order-label">您的訂單編號 / ORDER ID</div>
+      <div class="order-number" id="orderNumber">讀取中...</div>
+      <p class="missing-order" id="missingOrder">
+        暫時無法讀取訂單編號。請聯絡客服確認您的訂單。
+      </p>
+    </div>
+
+    <h2 class="next-title">接下來會怎麼做？</h2>
+
+    <div class="next-step">
+      <span class="step-icon">📞</span>
+      <span>我們可能會透過您提供的電話與您聯絡，確認訂單資料。</span>
+    </div>
+
+    <div class="next-step">
+      <span class="step-icon">📦</span>
+      <span>確認訂單後，我們將安排後續配送。</span>
+    </div>
+
+    <div class="next-step">
+      <span class="step-icon">💵</span>
+      <span>請按照配送及商家確認的資訊完成貨到付款。</span>
+    </div>
+
+    <div class="note">
+      請妥善保存您的訂單編號。
+      如果需要查詢訂單，請提供此編號以便客服協助。
+    </div>
+
+    <a href="/" class="home-button">返回首頁</a>
+
+    <div class="footer">
+      © 2026 健康生活. All Rights Reserved.
+    </div>
+
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get("order");
+
+    const orderNumberElement = document.getElementById("orderNumber");
+    const missingOrderElement = document.getElementById("missingOrder");
+
+    if (orderId && orderId.trim()) {
+      orderNumberElement.textContent = orderId.trim();
+    } else {
+      orderNumberElement.textContent = "尚未提供";
+      missingOrderElement.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
